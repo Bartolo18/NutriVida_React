@@ -2,8 +2,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Cabecera from './components/Cabecera';
 import Menu from './components/Menu';
 import PiePagina from './components/PiePagina';
+import Productos from './pages/Productos';
 
-// Las páginas pendientes se migran en las próximas etapas.
 function PaginaPendiente({ titulo }) {
   return <main className="contenedor"><h1>{titulo}</h1><p>Sección pendiente de migración.</p></main>;
 }
@@ -12,7 +12,7 @@ const paginas = [
   { ruta: '/', nombre: 'Inicio' },
   { ruta: '/nosotros', nombre: 'Nosotros' },
   { ruta: '/servicios', nombre: 'Servicios' },
-  { ruta: '/productos', nombre: 'Productos' },
+  { ruta: '/productos', nombre: 'Productos', componente: Productos },
   { ruta: '/blog', nombre: 'Blog' },
   { ruta: '/contacto', nombre: 'Contacto' },
   { ruta: '/solicitar-hora', nombre: 'Solicitar hora' },
