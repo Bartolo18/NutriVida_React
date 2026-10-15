@@ -2,3 +2,17 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #273b32; lin
 .contenedor { width: 90%; max-width: 1120px; margin: 0 auto; }
 main { min-height: 300px; padding: 30px 0; }
 h1, h2 { font-family: Georgia, 'Times New Roman', serif; }
+.franja { padding: 8px 15px; margin: 0; text-align: center; background: #164b3c; color: white; font-size: 12px; }
+header { padding: 22px 0; }
+a { color: #19583b; }
+.enlace-marca { text-decoration: none; }
+.logo { width: 38px; height: 38px; vertical-align: middle; margin-right: 8px; }
+.marca { font-size: 32px; font-weight: bold; }
+.bajada { margin-left: 50px; font-size: 13px; }
+.menu { background: #f4f7f2; border-top: 1px solid #d6e0d7; border-bottom: 1px solid #d6e0d7; }
+.menu .nav-link { margin-right: 20px; color: #19583b; }
+.menu .navbar-nav { flex-wrap: wrap; }
+.menu .nav-link.active { font-weight: bold; }
+footer { padding: 35px 0; background: #f0f4ed; }
+.marca-pie { font-size: 27px; font-weight: bold; }
+.creditos { margin-top: 25px; font-size: 13px; }
