@@ -1,0 +1,141 @@
+/* Validaciones de Contacto, Solicitar hora y los formularios de Acceso. Los formularios llaman a estas funciones
+   mientras se completan y al revisarlos; los avisos aparecen en la página, sin enviar ni guardar datos. */
+
+/* Revisa que nombres y mensajes contengan texto útil.
+   Si solo hay espacios o saltos de línea, el formulario los considera vacíos. */
+export function tieneTexto(texto) {
+    for (var i = 0; i < texto.length; i++) {
+        if (texto[i] != " " && texto[i] != "\t" && texto[i] != "\n" && texto[i] != "\r") {
+            return true;
+        }
+    }
+    return false;
+}
+/* Comprueba que el nombre tenga solamente letras, espacios o guiones.
+   También acepta tildes y la letra ñ. */
+export function nombreValido(nombre) {
+    var letras = "abcdefghijklmnñopqrstuvwxyzáéíóúü -";
+
+    if (!tieneTexto(nombre)) {
+        return false;
+    }
+
+    for (var i = 0; i < nombre.length; i++) {
+        var caracter = nombre[i].toLowerCase();
+        var permitido = false;
+
+        for (var j = 0; j < letras.length; j++) {
+            if (caracter == letras[j]) {
+                permitido = true;
+            }
+        }
+
+        if (!permitido) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/* Comprueba que la fecha seleccionada sea posterior al día actual. */
+export function fechaFutura(fecha) {
+    if (fecha == "") {
+        return false;
+    }
+
+    var hoy = new Date();
+    var anio = hoy.getFullYear();
+    var mes = hoy.getMonth() + 1;
+    var dia = hoy.getDate();
+
+    if (mes < 10) {
+        mes = "0" + mes;
+    }
+
+    if (dia < 10) {
+        dia = "0" + dia;
+    }
+
+    var fechaHoy = anio + "-" + mes + "-" + dia;
+
+    return fecha > fechaHoy;
+}
+
+
+/* Comprueba el formato del correo, el máximo de 100 caracteres y los dominios admitidos:
+   duoc.cl, profesor.duoc.cl o gmail.com. No comprueba si la dirección existe. */
+export function correoValido(correo) {
+    var arrobas = 0;
+    var posicionArroba = -1;
+    var dominio = "";
+    correo = correo.toLowerCase();
+    if (correo.length > 100) {
+        return false;
+    }
+    for (var i = 0; i < correo.length; i++) {
+        if (correo[i] == " " || correo[i] == "\t" || correo[i] == "\n" || correo[i] == "\r") {
+            return false;
+        }
+        if (correo[i] == "@") {
+            arrobas = arrobas + 1;
+            posicionArroba = i;
+        }
+        if (correo[i] == "." && correo[i + 1] == ".") {
+            return false;
+        }
+    }
+    if (arrobas != 1 || posicionArroba < 1) {
+        return false;
+    }
+    if (correo[0] == "." || correo[posicionArroba - 1] == ".") {
+        return false;
+    }
+    var caracteres = "abcdefghijklmnopqrstuvwxyz0123456789.!#$%&'*+-/=?^_`{|}~";
+    for (var k = 0; k < posicionArroba; k++) {
+        var permitido = false;
+        for (var l = 0; l < caracteres.length; l++) {
+            if (correo[k] == caracteres[l]) {
+                permitido = true;
+            }
+        }
+        if (!permitido) {
+            return false;
+        }
+    }
+    for (var j = posicionArroba + 1; j < correo.length; j++) {
+        dominio = dominio + correo[j];
+    }
+    if (dominio == "duoc.cl" || dominio == "profesor.duoc.cl" || dominio == "gmail.com") {
+        return true;
+    }
+    return false;
+}
+
+/* Comprueba que el teléfono tenga nueve dígitos, sin espacios ni +56.
+   Contacto utiliza esta revisión solo cuando se completa el campo opcional de teléfono. */
+export function telefonoValido(telefono) {
+    if (telefono.length != 9) {
+        return false;
+    }
+    for (var i = 0; i < telefono.length; i++) {
+        if (telefono[i] < "0" || telefono[i] > "9") {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+// Estas mismas reglas se utilizaban en los editores originales.
+export function precioValido(precio) {
+    return tieneTexto(String(precio)) && isFinite(precio) && Number(precio) >= 0;
+}
+
+export function stockValido(stock) {
+    return precioValido(stock) && Number(stock) % 1 === 0;
+}
+
+export function claveValida(clave) {
+    return tieneTexto(clave) && clave.length >= 4 && clave.length <= 10;
+}
