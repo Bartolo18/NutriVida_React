@@ -4,6 +4,8 @@ import Menu from './components/Menu';
 import PiePagina from './components/PiePagina';
 import Productos from './pages/Productos';
 import Contacto from './pages/Contacto';
+import Inicio from './pages/Inicio';
+import ProductoDetalle from './pages/ProductoDetalle';
 
 // Las páginas pendientes se migran en las próximas etapas.
 function PaginaPendiente({ titulo }) {
@@ -11,7 +13,7 @@ function PaginaPendiente({ titulo }) {
 }
 
 const paginas = [
-  { ruta: '/', nombre: 'Inicio' },
+  { ruta: '/', nombre: 'Inicio', componente: Inicio },
   { ruta: '/nosotros', nombre: 'Nosotros' },
   { ruta: '/servicios', nombre: 'Servicios' },
   { ruta: '/productos', nombre: 'Productos', componente: Productos },
@@ -30,6 +32,7 @@ function App() {
           <Route key={ruta} path={ruta} element={Pagina ? <Pagina /> : <PaginaPendiente titulo={nombre} />} />
         ))}
         <Route path="/administracion" element={<PaginaPendiente titulo="Acceso por perfil" />} />
+        <Route path="/productos/:codigo" element={<ProductoDetalle />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <PiePagina />
