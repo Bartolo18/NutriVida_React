@@ -1,10 +1,14 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import FormularioContacto from '../components/FormularioContacto'
+import FormularioHora from '../components/FormularioHora'
 
 const mensajeCorrecto =
   'Datos correctos. El mensaje no se ha enviado ni guardado.'
+
+const horaCorrecta =
+  'Datos correctos. La solicitud no se ha enviado ni guardado; no hay una hora reservada.'
 
 const errorMensaje = 'Escribe un mensaje (máximo 500 caracteres).'
 
@@ -44,6 +48,38 @@ async function enviarContactoValido() {
   expect(await screen.findByText(mensajeCorrecto)).toBeInTheDocument()
 
   return formulario.user
+}
+
+async function revisarSolicitudConFecha(fecha) {
+  const user = userEvent.setup()
+  render(<FormularioHora />)
+
+  const datos = [
+    ['Nombre completo', 'María Muñoz'],
+    ['Correo electrónico', 'maria@duoc.cl'],
+  ]
+
+  for (const [etiqueta, valor] of datos) {
+    await user.type(screen.getByLabelText(etiqueta), valor)
+  }
+
+  await user.selectOptions(
+    screen.getByLabelText('Atención que te interesa'),
+    'Primera consulta nutricional',
+  )
+
+  fireEvent.change(screen.getByLabelText('Fecha preferida'), {
+    target: { value: fecha },
+  })
+
+  await user.selectOptions(
+    screen.getByLabelText('Jornada preferida'),
+    'Mañana',
+  )
+
+  await user.click(
+    screen.getByRole('button', { name: 'Revisar solicitud' }),
+  )
 }
 
 describe('Formulario de contacto', () => {
@@ -91,5 +127,22 @@ describe('Formulario de contacto', () => {
 
     expect(screen.queryByText(mensajeCorrecto)).not.toBeInTheDocument()
     expect(await screen.findByText(errorMensaje)).toBeInTheDocument()
+  })
+})
+
+describe('Formulario de solicitud de hora', () => {
+  it('CP-07: rechaza una solicitud que tiene fecha pasada', async () => {
+    await revisarSolicitudConFecha('2000-01-01')
+
+    expect(
+      await screen.findByText('Selecciona una fecha futura.'),
+    ).toBeInTheDocument()
+    expect(screen.queryByText(horaCorrecta)).not.toBeInTheDocument()
+  })
+
+  it('CP-08: revisa una solicitud válida e informa que no existe una reserva', async () => {
+    await revisarSolicitudConFecha('2099-01-01')
+
+    expect(await screen.findByText(horaCorrecta)).toBeInTheDocument()
   })
 })

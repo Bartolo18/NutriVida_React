@@ -2,9 +2,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Cabecera from './components/Cabecera';
 import Menu from './components/Menu';
 import PiePagina from './components/PiePagina';
+import Inicio from './pages/Inicio';
 import Productos from './pages/Productos';
 import Contacto from './pages/Contacto';
-import Inicio from './pages/Inicio';
+import SolicitarHora from './pages/SolicitarHora';
 import ProductoDetalle from './pages/ProductoDetalle';
 
 // Las páginas pendientes se migran en las próximas etapas.
@@ -19,7 +20,7 @@ const paginas = [
   { ruta: '/productos', nombre: 'Productos', componente: Productos },
   { ruta: '/blog', nombre: 'Blog' },
   { ruta: '/contacto', nombre: 'Contacto', componente: Contacto },
-  { ruta: '/solicitar-hora', nombre: 'Solicitar hora' },
+  { ruta: '/solicitar-hora', nombre: 'Solicitar hora', componente: SolicitarHora },
 ]
 
 function App() {
