@@ -3,7 +3,9 @@ import Cabecera from './components/Cabecera';
 import Menu from './components/Menu';
 import PiePagina from './components/PiePagina';
 import Productos from './pages/Productos';
+import Contacto from './pages/Contacto';
 
+// Las páginas pendientes se migran en las próximas etapas.
 function PaginaPendiente({ titulo }) {
   return <main className="contenedor"><h1>{titulo}</h1><p>Sección pendiente de migración.</p></main>;
 }
@@ -14,9 +16,9 @@ const paginas = [
   { ruta: '/servicios', nombre: 'Servicios' },
   { ruta: '/productos', nombre: 'Productos', componente: Productos },
   { ruta: '/blog', nombre: 'Blog' },
-  { ruta: '/contacto', nombre: 'Contacto' },
+  { ruta: '/contacto', nombre: 'Contacto', componente: Contacto },
   { ruta: '/solicitar-hora', nombre: 'Solicitar hora' },
-];
+]
 
 function App() {
   return (
