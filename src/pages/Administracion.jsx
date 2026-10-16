@@ -5,6 +5,7 @@ import EncabezadoPagina from '../components/EncabezadoPagina';
 import FormularioAcceso from '../components/FormularioAcceso';
 import FormularioProducto from '../components/FormularioProducto';
 import FormularioUsuario from '../components/FormularioUsuario';
+import PanelSolicitudes from '../components/PanelSolicitudes';
 import { productosEjemplo, usuariosEjemplo } from '../data/ejemplosAdministracion';
 import { formatearPrecio } from '../utils/formatearPrecio';
 
@@ -61,6 +62,7 @@ function Administracion() {
           <div className="menu-gestion">
             {esPersonal && <button className="boton" type="button" onClick={() => setPanel('productos')}>Productos</button>}
             {esAdministrador && <button className="boton" type="button" onClick={() => setPanel('usuarios')}>Usuarios</button>}
+            {esPersonal && <button className="boton" type="button" onClick={() => setPanel('solicitudes')}>Solicitudes</button>}
             <button className="boton boton-secundario" type="button" onClick={salir}>Salir</button>
           </div>
 
@@ -104,6 +106,7 @@ function Administracion() {
 
           {esAdministrador && panel === 'editarProducto' && <FormularioProducto key={productoEditar?.codigo || 'nuevo'} producto={productoEditar} onVolver={() => setPanel('productos')} />}
           {esAdministrador && panel === 'editarUsuario' && <FormularioUsuario key={usuarioEditar?.correo || 'nuevo'} usuario={usuarioEditar} onVolver={() => setPanel('usuarios')} />}
+          {esPersonal && panel === 'solicitudes' && <PanelSolicitudes />}
 
           {usuario.perfil === 'Cliente' && (
             <section className="destacado">
