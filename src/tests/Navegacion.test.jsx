@@ -7,6 +7,27 @@ import TarjetaProducto from '../components/TarjetaProducto'
 import { productos } from '../data/productos'
 
 describe('Navegación y componentes reutilizables', () => {
+  it('CP-01: el menú abre las páginas públicas y sus contenidos', async () => {
+    const user = userEvent.setup()
+    render(<MemoryRouter><App /></MemoryRouter>)
+    const menu = within(screen.getByRole('navigation', { name: 'Menú principal' }))
+
+    await user.click(menu.getByRole('link', { name: 'Nosotros' }))
+    expect(screen.getByRole('heading', { name: 'Nutrición con sentido humano.' })).toBeInTheDocument()
+    await user.click(menu.getByRole('link', { name: 'Servicios' }))
+    expect(screen.getByRole('heading', { name: 'Servicios nutricionales.' })).toBeInTheDocument()
+    await user.click(menu.getByRole('link', { name: 'Productos' }))
+    expect(screen.getByRole('heading', { name: 'Primera consulta nutricional' })).toBeInTheDocument()
+    expect(screen.getAllByRole('article')).toHaveLength(18)
+    await user.click(menu.getByRole('link', { name: 'Blog' }))
+    expect(screen.getByRole('heading', { name: 'Conoce más sobre NutriVida.' })).toBeInTheDocument()
+    await user.click(menu.getByRole('link', { name: 'Contacto' }))
+    expect(screen.getByLabelText('Mensaje')).toBeInTheDocument()
+    await user.click(menu.getByRole('link', { name: 'Solicitar hora' }))
+    expect(screen.getByLabelText('Fecha preferida')).toBeInTheDocument()
+    await user.click(menu.getByRole('link', { name: 'Inicio' }))
+    expect(screen.getByRole('heading', { name: 'Tu bienestar empieza con una buena nutrición.' })).toBeInTheDocument()
+  })
   it('CP-02: la tarjeta muestra los datos recibidos por props y conduce a solicitar hora', () => {
     render(<MemoryRouter><TarjetaProducto producto={productos[0]} /></MemoryRouter>)
 
