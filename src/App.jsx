@@ -7,6 +7,9 @@ import Productos from './pages/Productos';
 import Contacto from './pages/Contacto';
 import SolicitarHora from './pages/SolicitarHora';
 import ProductoDetalle from './pages/ProductoDetalle';
+import Nosotros from './pages/Nosotros';
+import Servicios from './pages/Servicios';
+import Blog from './pages/Blog';
 
 // Las páginas pendientes se migran en las próximas etapas.
 function PaginaPendiente({ titulo }) {
@@ -15,10 +18,10 @@ function PaginaPendiente({ titulo }) {
 
 const paginas = [
   { ruta: '/', nombre: 'Inicio', componente: Inicio },
-  { ruta: '/nosotros', nombre: 'Nosotros' },
-  { ruta: '/servicios', nombre: 'Servicios' },
+  { ruta: '/nosotros', nombre: 'Nosotros', componente: Nosotros },
+  { ruta: '/servicios', nombre: 'Servicios', componente: Servicios },
   { ruta: '/productos', nombre: 'Productos', componente: Productos },
-  { ruta: '/blog', nombre: 'Blog' },
+  { ruta: '/blog', nombre: 'Blog', componente: Blog },
   { ruta: '/contacto', nombre: 'Contacto', componente: Contacto },
   { ruta: '/solicitar-hora', nombre: 'Solicitar hora', componente: SolicitarHora },
 ]
