@@ -1,18 +1,213 @@
-body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #273b32; line-height: 1.6; }
+/* Apariencia compartida por las ocho páginas: fondo, tipografía, títulos y enlaces.
+   .contenedor mantiene alineados el encabezado, el menú, el contenido y el pie. */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #273b32;
+    background-color: #ffffff;
+}
+
 .contenedor { width: 90%; max-width: 1120px; margin: 0 auto; }
-main { min-height: 300px; padding: 30px 0; }
-h1, h2 { font-family: Georgia, 'Times New Roman', serif; }
-.franja { padding: 8px 15px; margin: 0; text-align: center; background: #164b3c; color: white; font-size: 12px; }
-header { padding: 22px 0; }
+
 a { color: #19583b; }
+a:hover { color: #3e6a45; }
+
+h1, h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: normal; line-height: 1.15; }
+h1 { font-size: 48px; margin: 16px 0 24px; }
+h2 { font-size: 36px; margin: 12px 0 24px; }
+h3 { font-size: 22px; line-height: 1.3; }
+
+p { margin: 0 0 18px; }
+img { max-width: 100%; }
+section { margin-bottom: 55px; }
+main { padding-bottom: 15px; }
+
+/* Identidad de NutriVida: franja verde superior, logo, nombre y bajada de la clínica.
+   Los tamaños del nombre y la bajada crean la diferencia visual entre ambos textos. */
+.franja { margin: 0; padding: 8px 15px; text-align: center; background-color: #164b3c; color: #ffffff; font-size: 12px; letter-spacing: 1px; }
+
+header { padding: 22px 0; }
+
 .enlace-marca { text-decoration: none; }
 .logo { width: 38px; height: 38px; vertical-align: middle; margin-right: 8px; }
-.marca { font-size: 32px; font-weight: bold; }
-.bajada { margin-left: 50px; font-size: 13px; }
-.menu { background: #f4f7f2; border-top: 1px solid #d6e0d7; border-bottom: 1px solid #d6e0d7; }
-.menu .nav-link { margin-right: 20px; color: #19583b; }
+
+.marca { font-size: 32px; font-weight: bold; vertical-align: middle; }
+.bajada { margin: 2px 0 0 50px; font-size: 13px; color: #4e6658; }
+
+/* NavLink marca la ruta activa; Navbar muestra un botón de menú en el teléfono. */
+nav { border-top: 1px solid #e4eae3; border-bottom: 1px solid #d6e0d7; padding: 10px 0; background-color: #f4f7f2; }
+
+nav a { display: inline-block; padding: 9px 0; margin-right: 25px; font-size: 15px; text-decoration: none; border-bottom: 3px solid transparent; }
+
+nav a:hover, nav a.actual { border-bottom-color: #d9b643; color: #164b3c; }
+nav a.actual { font-weight: bold; }
+
+/* Row y Col de Bootstrap distribuyen el texto y la fotografía de Inicio.
+   También define el título grande, las esquinas de la foto y las etiquetas pequeñas de las secciones. */
+.portada { padding: 38px 0; margin-bottom: 0; }
+
+.texto-portada { margin-right: 0; }
+
+.portada h1 { font-size: 54px; color: #164b3c; }
+
+.imagen-portada { display: block; width: 100%; height: 520px; object-fit: cover; vertical-align: middle; border-radius: 90px 12px 12px 12px; }
+
+.etiqueta { font-size: 12px; font-weight: bold; letter-spacing: 1.5px; color: #50694e; margin-bottom: 16px; }
+
+.accion { margin-top: 24px; }
+
+/* Aspecto de los botones y enlaces principales, como Solicitar hora.
+   Las variantes cambian sus colores; el destino o la acción se define en el HTML. */
+.boton { display: inline-block; padding: 12px 19px; border: 1px solid #164b3c; border-radius: 5px; background-color: #164b3c; color: #ffffff; font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bold; line-height: 1.5; text-decoration: none; cursor: pointer; }
+
+.boton:hover { background-color: #2a654a; color: #ffffff; }
+.boton-secundario { background-color: #ffffff; color: #164b3c; }
+.boton-claro { background-color: #d8ee88; color: #164b3c; border-color: #d8ee88; }
+
+/* Bloques informativos: datos de la clínica, presentación de cada página y avisos destacados.
+   Los fondos, bordes y espacios distinguen la información principal de las notas complementarias. */
+.datos-clinica { border-top: 1px solid #d6e0d7; border-bottom: 1px solid #d6e0d7; padding: 20px 0; text-align: center; }
+
+.datos-clinica p { display: block; width: 100%; margin: 0; vertical-align: top; font-size: 14px; }
+.datos-clinica strong { color: #164b3c; font-size: 18px; }
+
+.encabezado-pagina { padding: 40px 0 24px; border-bottom: 1px solid #d6e0d7; margin-bottom: 35px; }
+.encabezado-pagina p { max-width: 760px; }
+
+.destacado { padding: 30px; background-color: #f0f6f2; border-left: 5px solid #e4b849; }
+
+.panel-verde { padding: 38px; border-radius: 12px; background-color: #164b3c; color: #ffffff; }
+.panel-verde .etiqueta, .panel-verde .nota { color: #edf3e9; }
+
+.nota { font-size: 14px; color: #526348; }
+
+/* Tarjetas de Inicio y del catálogo: organizan fotos, títulos, descripciones y precios en dos columnas.
+   Las alturas reservadas alinean sus textos; los enlaces de sección sirven de índice dentro de la página. */
+.tarjetas + .nota { margin-top: 24px; }
+
+.tarjeta { display: block; width: 100%; height: 100%; margin: 0; vertical-align: top; border: 1px solid #d6e0d7; border-radius: 9px; overflow: hidden; box-sizing: border-box; }
+
+.tarjeta img { display: block; width: 100%; height: 240px; object-fit: cover; }
+
+.contenido-tarjeta { padding: 26px; }
+
+.tarjeta .etiqueta { font-size: 11px; min-height: 36px; margin-bottom: 10px; }
+.tarjeta h3 { min-height: 58px; color: #164b3c; margin: 0 0 18px; }
+
+.descripcion { min-height: 105px; color: #4f6155; }
+
+.precio { border-top: 1px solid #e3e9df; padding-top: 18px; font-size: 27px; font-weight: bold; color: #164b3c; }
+
+.contenido-tarjeta p:last-child { margin-bottom: 0; }
+
+.enlaces-seccion { padding: 15px 0; border-bottom: 1px solid #d6e0d7; margin-bottom: 30px; }
+.enlaces-seccion a { display: inline-block; margin: 7px 24px 7px 0; }
+
+/* Nosotros coloca la fotografía junto al texto de presentación.
+   Servicios muestra cada área en un bloque con contorno y borde amarillo a la izquierda. */
+.presentacion-clinica { padding-top: 12px; }
+
+.imagen-clinica { display: block; width: 100%; height: 380px; object-fit: cover; border-radius: 55px 10px 10px 10px; vertical-align: top; }
+.texto-clinica { margin-left: 0; }
+
+.servicio { padding: 28px; margin-bottom: 25px; border: 1px solid #d6e0d7; border-left: 5px solid #e4b849; border-radius: 5px; }
+.servicio h2 { font-size: 30px; }
+
+/* Tabla de información: diferencia los encabezados y separa las celdas con bordes.
+   Si no cabe en una pantalla pequeña, su contenedor permite desplazarla horizontalmente. */
+.tabla-contenedor { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+
+caption { padding: 0 0 14px; text-align: left; font-size: 14px; color: #4f6155; }
+
+th, td { border: 1px solid #d6e0d7; text-align: left; padding: 15px; vertical-align: top; }
+th { background-color: #edf3e9; color: #164b3c; }
+
+/* Artículos completos del Blog: limita el ancho de lectura y separa cada publicación.
+   Las fotos y los subtítulos comparten tamaños y espacios para mantener la misma presentación. */
+.articulo-blog { max-width: 800px; margin: 0 auto 55px; padding-bottom: 36px; border-bottom: 1px solid #d6e0d7; }
+
+.imagen-articulo { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; margin-bottom: 24px; }
+.articulo-blog h3 { margin-top: 30px; color: #164b3c; }
+
+/* Formularios de Contacto y Solicitar hora: ordena etiquetas, campos y mensajes de revisión.
+   Los errores se ven rojos y el resultado verde; se reserva espacio para que los avisos no muevan el botón. */
+.panel-formulario { max-width: 720px; margin: 0 auto 45px; padding: 32px; border: 1px solid #d6e0d7; border-radius: 10px; box-sizing: border-box; }
+
+.fila-formulario { margin-bottom: 12px; }
+
+label { display: block; font-weight: bold; margin-bottom: 7px; }
+
+input, select, textarea { width: 100%; box-sizing: border-box; padding: 12px; border: 1px solid #9bae9f; border-radius: 5px; background-color: #ffffff; color: #273b32; font-family: Arial, Helvetica, sans-serif; font-size: 16px; }
+
+textarea { min-height: 140px; resize: vertical; }
+
+input:focus, select:focus, textarea:focus { outline: 2px solid #557943; outline-offset: 2px; }
+
+.ayuda-formulario { margin: 5px 0; font-size: 13px; color: #526348; }
+
+.error { min-height: 3.2em; margin: 5px 0 0; color: #a42f2f; font-size: 13px; line-height: 1.6; }
+
+.resultado { color: #19583b; font-weight: bold; margin-top: 20px; }
+
+/* El estado de React muestra el panel correspondiente a cada perfil. */
+.menu-gestion { margin: 24px 0; }
+.menu-gestion .boton { margin: 0 8px 10px 0; }
+.cuentas-prueba { padding-left: 20px; overflow-wrap: break-word; }
+.detalle-solicitud { margin-top: 25px; }
+
+/* Pie común de las páginas: muestra la marca, los enlaces y los créditos sobre un fondo claro.
+   Una línea separa los nombres de los integrantes del resto del contenido. */
+footer { background-color: #f0f4ed; border-top: 1px solid #d6e0d7; padding: 35px 0 20px; }
+
+.marca-pie { font-size: 27px; font-weight: bold; color: #164b3c; }
+.creditos { font-size: 13px; margin-top: 25px; border-top: 1px solid #d6e0d7; padding-top: 15px; }
+
+/* Adaptación a pantallas de 768px o menos: apila las columnas y muestra una tarjeta por fila.
+   Reduce títulos, fotografías y espacios para que el mismo contenido se lea desde un teléfono. */
+@media (max-width: 768px) {
+    .contenedor { width: 90%; }
+    h1, .portada h1 { font-size: 38px; }
+    h2 { font-size: 29px; }
+    h3 { font-size: 21px; }
+    header { padding: 16px 0; }
+    nav a { margin-right: 19px; padding: 7px 0; }
+
+    .texto-portada, .imagen-portada, .imagen-clinica, .texto-clinica { display: block; width: 100%; margin: 0; }
+    .imagen-portada { height: 310px; margin-top: 26px; border-radius: 60px 10px 10px 10px; }
+    .imagen-clinica { height: 290px; margin-bottom: 28px; }
+    .datos-clinica p { display: block; width: 100%; margin: 14px 0; }
+
+    .tarjeta { width: 100%; margin: 0; }
+    .tarjeta h3, .descripcion, .tarjeta .etiqueta { min-height: 0; }
+
+    .tarjeta img { height: 215px; }
+    .contenido-tarjeta { padding: 23px; }
+    .destacado, .panel-verde, .servicio { padding: 25px; }
+    .panel-formulario { padding: 22px; }
+    .imagen-articulo { height: 235px; }
+    th, td { padding: 10px; }
+    section { margin-bottom: 40px; }
+}
+
+/* Ajustes necesarios para combinar los colores originales con React-Bootstrap. */
 .menu .navbar-nav { flex-wrap: wrap; }
-.menu .nav-link.active { font-weight: bold; }
-footer { padding: 35px 0; background: #f0f4ed; }
-.marca-pie { font-size: 27px; font-weight: bold; }
-.creditos { margin-top: 25px; font-size: 13px; }
+.menu .nav-link { color: #19583b; padding: 9px 0; }
+.menu .nav-link.active { font-weight: bold; border-bottom-color: #d9b643; color: #164b3c; }
+.menu .contenedor { padding-left: 0; padding-right: 0; }
+.table { --bs-table-bg: transparent; --bs-table-color: #273b32; --bs-table-border-color: #d6e0d7; }
+.table th { --bs-table-bg: #edf3e9; }
+.table th, .table td { padding: 15px; border: 1px solid #d6e0d7; }
+.table caption { caption-side: top; }
+.form-control, .form-select { font-size: 16px; padding: 12px; border-color: #9bae9f; }
+button.boton { margin-bottom: 8px; }
+.articulo-blog, .encabezado-pagina, .tarjeta { scroll-margin-top: 24px; }
+.detalle-producto { max-width: 720px; margin-left: auto; margin-right: auto; }
+
+@media (max-width: 767px) {
+    .menu .nav-link { margin-right: 0; }
+    .menu .navbar-nav { padding-top: 10px; }
+    .table th, .table td { padding: 10px; }
+}
