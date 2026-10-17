@@ -1,0 +1,81 @@
+﻿> nutrivida-react@2.0.0 coverage
+> vitest run --coverage
+
+RUN v5.0.4 C:/Users/villa/OneDrive/Documents/GitHub/NutriVida_React
+Coverage enabled with v8
+
+src/tests/Navegacion.test.jsx (5 tests) 1581ms
+  Navegacion y componentes reutilizables (5)
+    CP-01: el menu abre las paginas publicas y sus contenidos 1282ms
+
+src/tests/Acceso.test.jsx (8 tests) 6224ms
+  Acceso de demostracion y permisos de cada perfil (8)
+    CP-09: rechaza una contrasena incorrecta sin ejecutar onIngresar 809ms
+    CP-10: entrega el perfil de administrador al ingresar con la cuenta valida 505ms
+    CP-11: muestra las herramientas de usuarios y nuevos productos al administrador 765ms
+    CP-12: permite consultar al vendedor sin mostrar herramientas exclusivas del administrador 639ms
+    CP-16: el cliente accede a la vista publica sin herramientas de gestion 639ms
+    CP-17: carga un producto para editarlo y vuelve al catalogo de ejemplo sin modificarlo 982ms
+    CP-18: carga un usuario para editarlo y conserva la cuenta de prueba al volver 1136ms
+    CP-19: el vendedor abre y cambia el detalle de las solicitudes ficticias 741ms
+
+src/tests/Formularios.test.jsx (9 tests) 7684ms
+  Formulario de contacto (4)
+    CP-03: impide revisar un mensaje con campos obligatorios vacios 406ms
+    CP-04: permite revisar un mensaje valido dejando el telefono opcional vacio 1193ms
+    CP-05: rechaza un dominio de correo no admitido y un telefono incompleto 1662ms
+    CP-06: retira la confirmacion anterior cuando se cambia el mensaje 1206ms
+
+  Formulario de solicitud de hora (2)
+    CP-07: rechaza una solicitud que tiene fecha pasada 640ms
+    CP-08: revisa una solicitud valida e informa que no existe una reserva 635ms
+
+  Formularios de administracion (3)
+    CP-13: rechaza un precio negativo y un stock con decimales 542ms
+    CP-14: acepta precio y stock cero y explica que el cambio no se guarda 572ms
+    CP-15: revisa un usuario ficticio sin afirmar que creo una cuenta 819ms
+
+Test Files  3 passed (3)
+Tests       22 passed (22)
+Start at    09:52:32
+Duration    52.54s
+            environment 57%, import 20%, setup 11%, tests 11%, transform 1%
+
+Coverage report from v8
+
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   90.23 |    85.62 |   95.91 |   91.66 |
+ src               |     100 |      100 |     100 |     100 |
+  App.jsx          |     100 |      100 |     100 |     100 |
+ src/components    |   97.46 |    92.06 |   98.14 |     100 |
+  ArticuloBlog.jsx |     100 |      100 |     100 |     100 |
+  Cabecera.jsx     |     100 |      100 |     100 |     100 |
+  ...ormulario.jsx |     100 |      100 |     100 |     100 |
+  ...adoPagina.jsx |     100 |      100 |     100 |     100 |
+  ...rioAcceso.jsx |   96.15 |    91.66 |     100 |     100 | 26
+  ...oContacto.jsx |     100 |      100 |     100 |     100 |
+  ...larioHora.jsx |     100 |    85.71 |     100 |     100 | 23
+  ...oProducto.jsx |     100 |    92.85 |     100 |     100 | 26
+  ...ioUsuario.jsx |   88.88 |    83.33 |   85.71 |     100 | 21-26
+  ...nProducto.jsx |     100 |      100 |     100 |     100 |
+  Menu.jsx         |     100 |      100 |     100 |     100 |
+  ...licitudes.jsx |     100 |      100 |     100 |     100 |
+  PiePagina.jsx    |     100 |      100 |     100 |     100 |
+  ...aProducto.jsx |     100 |      100 |     100 |     100 |
+  ...aServicio.jsx |     100 |      100 |     100 |     100 |
+ src/pages         |   91.07 |    90.24 |    90.9 |   93.87 |
+  ...istracion.jsx |   85.29 |    89.74 |   83.33 |   90.32 | 63,83,103
+  Blog.jsx         |     100 |      100 |     100 |     100 |
+  Contacto.jsx     |     100 |      100 |     100 |     100 |
+  Inicio.jsx       |     100 |      100 |     100 |     100 |
+  Nosotros.jsx     |     100 |      100 |     100 |     100 |
+  ...toDetalle.jsx |     100 |      100 |     100 |     100 |
+  Productos.jsx    |     100 |      100 |     100 |     100 |
+  Servicios.jsx    |     100 |      100 |     100 |     100 |
+  ...citarHora.jsx |     100 |      100 |     100 |     100 |
+ src/utils         |   81.81 |    76.19 |     100 |   81.15 |
+  ...tearPrecio.js |     100 |      100 |     100 |     100 |
+  validaciones.js  |   81.57 |    76.19 |     100 |   80.88 | ...92,103,121-126
+-------------------|---------|----------|---------|---------|-------------------

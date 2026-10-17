@@ -1,0 +1,18 @@
+﻿v24.21.0
+11.19.0
+nutrivida-react@2.0.0 C:\Users\villa\OneDrive\Documents\GitHub\NutriVida_React
+@testing-library/jest-dom@7.0.1
+@testing-library/react@16.3.3
+@testing-library/user-event@14.6.8
+@vitejs/plugin-react@6.1.2
+@vitest/coverage-v8@5.0.4
+bootstrap@5.3.8
+jsdom@29.1.1
+ react-bootstrap@2.10.10
+react-dom@19.3.1
+react-hook-form@7.90.0
+react-router-dom@7.18.4
+react@19.3.1
+vite@8.3.4
+vitest@5.0.4
+
